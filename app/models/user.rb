@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
     if user = find_by(provider: auth_info.provider, uid: auth_info.uid)
       user
     else
-      create({
+      create!({
           uid:                auth_info.uid,
+          provider:           auth_info.provider,
           github_name:        auth_info.info.nickname,
           email:              auth_info.info.email,
           image_url:          auth_info.info.image,

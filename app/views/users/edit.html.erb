@@ -1,0 +1,12 @@
+<%= form_for @user do |f| %>
+  <%#= f.label :languages %><br>
+  <%#= f.collection_check_boxes(:languages, @user.languages.all, :id, :name) %><hr/>
+
+  <%#= f.label :category_ids, 'Categories' %><br/>
+  <%#= f.collection_check_boxes(:category_ids, @restaurant.categories.all, :id, :name) %><hr/>
+
+  <%= f.label :about_me %>
+  <%= f.text_field :about_me %>
+
+  <%= f.submit "Let's Get Pairing" %>
+<% end %>

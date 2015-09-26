@@ -16,7 +16,7 @@ describe 'User profile', :omniauth, type: :feature do
 
     it 'shows my dashboard page' do
       visit dashboard_path
-      expect(page).to have_text("Welcome, whithub")
+      expect(page).to have_text("Hello, whithub")
     end
 
     xit 'displays my likes and lets me remove one' do

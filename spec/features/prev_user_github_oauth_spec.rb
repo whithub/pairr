@@ -3,15 +3,7 @@ require "rails_helper"
 describe 'testing oauth with github,', :omniauth, type: :feature do
   context "as a previously signed in user," do
     before(:each) do
-      visit '/'
-      auth_mock
-      click_on "Login with Github"
-
-      find(:css, "#user_language_ids_1").set(true)
-      find(:css, "#user_language_ids_4").set(true)
-
-      fill_in "user_about_me", with: "I'm a catch."
-      click_on "Let's Get Pairing"
+      previous_user_signin
       click_on 'Logout'
     end
 

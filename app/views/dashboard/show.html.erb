@@ -1,7 +1,7 @@
 
 <header class="navigation" role="banner">
   <%#= link_to 'Music Story', root_path, class: 'logo' %>
-  <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+  <!--<a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>-->
   <div class="navigation-tools">
     <ul>
       <li class="nav-link"></li>
@@ -15,7 +15,7 @@
       <% end %>
     </ul>
   </div>
-  </div>
+  <!--</div>-->
 </header>
 
 
@@ -23,7 +23,9 @@
 
 <h2> Hello, <%= @user.github_name %></h2>
 
-<%= @user.languages.map do |lang| %>
-  <%= lang.name %>
-<% end %>
+<%#= @user.languages.map do |lang| %>
+  <%#= lang.name %>
+<%# end %>
+
+<a href="/"></a>
 

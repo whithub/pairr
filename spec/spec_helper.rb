@@ -31,6 +31,33 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
+  config.before(:suite) do
+    Language.create!(name: "JavaScript")
+    Language.create!(name: "Java")
+    Language.create!(name: "Ruby")
+    Language.create!(name: "C")
+    Language.create!(name: "CSS")
+    Language.create!(name: "PHP")
+    Language.create!(name: "Python")
+    Language.create!(name: "C++")
+    Language.create!(name: "Objective-C")
+    Language.create!(name: "C#")
+    Language.create!(name: "Javascript")
+    Language.create!(name: "Objective-C")
+    Language.create!(name: "Shell")
+    Language.create!(name: "R")
+    Language.create!(name: "CoffeeScript")
+    Language.create!(name: "Go")
+    Language.create!(name: "Perl")
+    Language.create!(name: "Scala")
+    Language.create!(name: "VimL")
+    Language.create!(name: "Clojure")
+    Language.create!(name: "Haskell")
+    Language.create!(name: "Erlang")
+    Language.create!(name: "Rust")
+    Language.create!(name: "Swift")
+  end
+
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|

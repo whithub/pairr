@@ -9,23 +9,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(user_params)
-    select_preferred_languages
-    redirect_to dashboard_path
+    if current_user.update(user_params)
+      redirect_to dashboard_path
+    else
+      flash.now[:errors] = current_user.errors.full_messages.join(", ")
+      render :edit
+    end
   end
-
 
   private
 
   def user_params
-    params.require(:user).permit(:about_me)
+    params.require(:user).permit(:about_me, language_ids: [])
   end
 
   def set_user
     @user = current_user
   end
 
-  def select_preferred_languages
-    puts "Languages here..."
-  end
 end

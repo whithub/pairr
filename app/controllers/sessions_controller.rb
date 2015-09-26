@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(auth_info)
 
     if first_time_user?
-      # binding.pry
       session[:user_id] = @user.id
       redirect_to edit_user_path(@user.id)
       flash[:success] = "Welcome to Pairr! We just a need a little bit more information to get your account set up."
@@ -34,7 +33,7 @@ class SessionsController < ApplicationController
   end
 
   def first_time_user?
-    @user && @user.about_me == nil #|| @user.languages.count == 0
+    @user && @user.about_me == nil || @user.languages.count == 0
   end
 
 end

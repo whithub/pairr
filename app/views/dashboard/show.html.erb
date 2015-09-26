@@ -23,4 +23,7 @@
 
 <h2> Hello, <%= @user.github_name %></h2>
 
+<%= @user.languages.map do |lang| %>
+  <%= lang.name %>
+<% end %>
 

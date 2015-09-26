@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  has_many :user_languages
+  has_many :languages, through: :user_languages
+
+
   validates :uid, presence: true, uniqueness: true
   validates :github_name, presence: true
 

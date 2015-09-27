@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Match, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:matchee) do
+    user = User.create!(github_name: "whithub", uid: 1)
+  end
+
 end

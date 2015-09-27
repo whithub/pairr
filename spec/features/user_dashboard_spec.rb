@@ -19,6 +19,19 @@ describe 'User dashboard', :omniauth, type: :feature do
       expect(page).to have_text("Hello, whithub")
     end
 
+    xit "displays a button inviting them to 'Find Pairs'." do
+      expect(page).to have_button("Find Pairs")
+    end
 
+    xit "and click on Find Pairs button,
+        should take user to a new screen,
+        where they will be shown potential pairs,
+        and invited to match with them or not." do
+
+      click_on "Find Pairs"
+
+      expect(current_path).to eq("")
+      expect(page).to have_button("Find Pairs!")
+    end
   end
 end

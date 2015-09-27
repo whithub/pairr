@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
-  # before_update :chooses_at_least_one_language
-
   has_many :user_languages
   has_many :languages, through: :user_languages
+
+  has_many :matches
+  has_many :matchees, through: :matches
 
   validates :uid, presence: true, uniqueness: true
   validates :github_name, presence: true

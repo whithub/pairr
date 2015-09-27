@@ -1,6 +1,6 @@
 <%= form_for @user do |f| %>
   <%= f.label :languages %><br>
-  <%= f.collection_check_boxes(:language_ids, Language.all, :id, :name) %><hr/>
+  <%= f.collection_check_boxes(:language_ids, Language.all.sort_by { |lang| lang.name }, :id, :name) %><hr/>
 
   <%#= f.label :category_ids, 'Categories' %><br/>
   <%#= f.collection_check_boxes(:category_ids, @restaurant.categories.all, :id, :name) %><hr/>

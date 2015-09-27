@@ -27,5 +27,8 @@
   <%#= lang.name %>
 <%# end %>
 
-<a href="/users/<%= "#{current_user.id}" %>/matches">Find Pairs</a>
-
+<!--<a href="/users/<%#= "#{current_user.id}" %>/friendships">Find Pairs</a>-->
+<%= link_to "Find Pairs", user_friendships_path(current_user), id: "find-pairs-button"%>
+<!--<div id="find-pairs-button">-->
+  <!--<a href="<%#= user_friendships_path(current_user) %>" >Find Pairs</a>-->
+<!--</div>-->

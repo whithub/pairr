@@ -619,7 +619,7 @@ class Seed
   def create_matches
     User.all.each do |user1|
       User.all.each do |user2|
-        Match.create(user_id: user1.id, matchee_id: user2.id) unless user1.id == user2.id
+        Friendship.create(friend_id: user1.id, friendable_id: user2.id) unless user1.id == user2.id
       end
     end
     puts "Matches Created"
@@ -627,4 +627,4 @@ class Seed
 end
 
 
-Seed.new.run
+Seed.run

@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
   has_many :user_languages
   has_many :languages, through: :user_languages
 
-  has_many :matches
-  has_many :matchees, through: :matches
-
   validates :uid, presence: true, uniqueness: true
   validates :github_name, presence: true
   validate  :chose_at_least_one_language, on: :update

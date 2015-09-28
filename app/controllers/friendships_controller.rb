@@ -4,7 +4,9 @@ class FriendshipsController < ApplicationController
   before_filter :set_match
 
   def index
-    # @matches = User.where.not(id: current_user.id)
+    existing_requests = current_user.pending_friends + current_user.friends + [current_user]
+    existing_request_ids = existing_requests.map(&:id)
+    @matches = User.where.not(id: existing_request_ids)
   end
 
   def approve
@@ -31,7 +33,7 @@ class FriendshipsController < ApplicationController
   end
 
   def set_match
-    @match = User.where.not(id: current_user.id).first
+    @match = User.find_by(id: params[:friendship_id])
     # @match = User.where.not(id: params[:friend_id]).first
   end
 end

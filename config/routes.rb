@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   get '/logout',      as: :logout, to: 'sessions#destroy'
 
   resources :users do
-    resources :friendships, only: [:index]
+    resources :friendships, only: [:index] do
+      post 'reject'#, to: 'friendships#reject'
+      post 'approve'#, to: 'friendships#approve'
+    end
 
-    post 'friendships/reject', to: 'friendships#reject'
-    post 'friendships/approve', to: 'friendships#approve'
   end
 
 end

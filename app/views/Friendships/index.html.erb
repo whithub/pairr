@@ -1,16 +1,17 @@
 <h1> Potential Pairs </h1>
 
-<%# @matches.each do |match| %>
-<img src="<%= @match.image_url %>" >
-<%= @match.github_name %>
-
-<%# end %>
-<br>
-<br>
-
-<%= link_to "Approve", user_friendships_approve_path(@user), method: :post %>
+<% @matches.each do |match| %>
+<img src="<%= match.image_url %>" >
+<%= match.github_name %>
 
 <br>
 <br>
 
-<%= link_to "Reject", user_friendships_reject_path(@user), method: :post %>
+<%= link_to "Approve", user_friendship_approve_path(current_user, match), method: :post %>
+
+<br>
+<br>
+
+<%= link_to "Reject", user_friendship_reject_path(current_user, match), method: :post %>
+<hr/>
+<% end %>

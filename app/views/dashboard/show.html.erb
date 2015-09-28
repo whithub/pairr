@@ -27,7 +27,6 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header"><%= @user.github_name %>
-        <small>Item Subheading</small>
       </h1>
     </div>
   </div>
@@ -55,22 +54,17 @@
         <% end %>
       </ul>
 
+      <h3> Stats: </h3>
+      <p>Pending Match Requests: <%= current_user.pending_friends.count %></p>
+
+      <p>Look at what a dick you are... Matches You've Rejected: <%= current_user.rejecteds.count %></p>
+
+
       <br>
       <%= link_to "Find Pairs", user_friendships_path(current_user), class: "btn btn-default" %>
     </div>
 
   </div>
-
-
-
-
-
-  <h3>Total Friends liked <%= current_user.pending_friends.count %></h3>
-
-  <h3>Total Friends rejected <%= current_user.rejecteds.count %></h3>
-
-
-
 
   <div class="row">
 

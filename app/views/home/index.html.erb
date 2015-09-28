@@ -1,20 +1,18 @@
 
 <div class="container-fluid container-home">
-  <!--<div class="col-md-2"></div>-->
-  <div class="col-md-12">
-    <h1 class="home">Welcome to Pairr </h1>
-    <h2 class="home"> Tinder for Programming!</h2>
-    <h3 class="home">Finding a perfect programming pair is hard.</h3>
-    <h3 class="home">Let us help match you with your perfect pair.</h3>
-    <% if current_user %>
-      <ul class="nav-link"><%= link_to 'Profile', dashboard_path, class: "btn btn-lg btn-default btn-home" %></ul>
-      <ul class="nav-link"><%= link_to 'Logout', logout_path, class: "btn btn-lg btn-default btn-home" %></ul>
-    <% else %>
-      <ul class="nav-link">
-        <%= link_to "Login with Github", "/auth/github", class: "btn btn-lg btn-default btn-home" %>
-      </ul>
-    <% end %>
+  <div class="row"></div>
 
+  <div class="row">
+    <div class="col-md-12 welcome-block">
+        <h1 class="home">Welcome to Pairr </h1>
+      <h2 class="home"> Tinder for Programming!</h2>
+      <h3 class="home">Finding a perfect programming partner is hard.</h3>
+      <h3 class="home"> Let us help match you with your perfect pair!</h3>
+        <ul class="nav-link">
+          <%= link_to "Login with Github", "/auth/github", class: "btn btn-lg btn-default btn-home" %>
+        </ul>
+    </div>
   </div>
-  <!--<div class="col-md-2"></div>-->
+
+  <div class="row"></div>
 </div>

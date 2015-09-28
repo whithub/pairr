@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :match do
+  factory :friendship do
     
   end
 

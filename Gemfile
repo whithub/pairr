@@ -9,7 +9,7 @@ gem 'sprockets-rails'
 
 
 gem 'rspec-rails'
-gem 'rails', '4.2.1'
+gem 'rails', "~> 4.2.1"
 
 gem 'pg'
 gem 'uglifier', '>= 1.3.0'
@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
+gem 'has_friendship', github: 'yhoshino11/has_friendship', branch: 'devel'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'

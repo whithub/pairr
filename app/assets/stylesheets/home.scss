@@ -3,14 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container-home {
-  background-color: #1B3C59;
+//  background-color: #1B3C59;
+  background-image: url("desktop_3.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
   min-height: 100vh;
   padding-top: 30vh;
   text-align: center;
 }
 
+.welcome-block {
+  background-color: white;
+//  opacity: 0.5;
+}
+
 .home {
-  color: white;
+  color: black;
   font-weight: 100;
   font-size: 100;
 }
@@ -18,20 +27,23 @@
 h1.home {
   font-size: 60px;
   color: #F8BB44;
+  font-weight: 300;
 }
 
 h2.home {
   color: #F8BB44;
+  font-weight: 300;
 }
 
 
 a.btn.btn-lg.btn-default.btn-home {
-  background-color: transparent;
+  background-color: #60BFBF;
   border-width: 2px;
-  color: #60BFBF;
+  color: white;
   font-weight: 100;
   border-color: #60BFBF;
   margin-top: 20px;
+  margin-right: 33%;
 }
 
 a.btn.btn-lg.btn-default.btn-home:hover {

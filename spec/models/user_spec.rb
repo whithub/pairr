@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
     user = User.create(github_name: "whithub", uid: 1)
   end
 
-  it 'requires a name' do
+  it 'requires a github_name' do
     is_expected.to validate_presence_of(:github_name)
   end
 

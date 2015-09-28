@@ -1,31 +1,99 @@
 
-<header class="navigation" role="banner">
-  <%#= link_to 'Music Story', root_path, class: 'logo' %>
-  <!--<a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>-->
-  <div class="navigation-tools">
-    <ul>
-      <li class="nav-link"></li>
-      <% if current_user %>
-        <li class="nav-link"><%= link_to 'Profile', dashboard_path %></li>
-        <li class="nav-link"><%= link_to 'Logout', logout_path %></li>
-      <% else %>
-        <li class="nav-link">
-          <%= link_to 'Login with Github', login_path %>
-        </li>
-      <% end %>
-    </ul>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">Pairr Programming</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <% if current_user %>
+          <li><%= link_to 'Profile', dashboard_path %></li>
+          <li><%= link_to 'Logout', logout_path %></li>
+        <% else %>
+          <li><%= link_to 'Login with Github', login_path %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <!--</div>-->
-</header>
+</nav>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header"><%= current_user.github_name %>
+      </h1>
+    </div>
+  </div>
 
 
-<h1>Dashboard View!</h1>
+  <div class="row">
 
-<h2> Hello, <%= @user.github_name %></h2>
+    <div class="col-md-5">
+      <img class="img-responsive" src="<%= current_user.image_url %>" alt="">
+    </div>
 
-<%#= @user.languages.map do |lang| %>
-  <%#= lang.name %>
-<%# end %>
+    <div class="col-md-7">
 
-<a href="/users/<%= "#{current_user.id}" %>/matches">Find Pairs</a>
+      <h3>About Me</h3>
+      <% if current_user.about_me != "" %>
+        <p><%= current_user.about_me %></p>
+      <% else %>
+        <p> You're 80% more likely to get matched if you put a little something about yourself... </p>
+      <% end %>
 
+      <h3>Preferred Languages</h3>
+      <ul>
+        <% current_user.languages.map do |language| %>
+          <li><%= language.name %></li>
+        <% end %>
+      </ul>
+
+      <h3> Stats: </h3>
+      <p>Pending Match Requests: <%= current_user.pending_friends.count %></p>
+
+      <p>Look at what a dick you are... Matches You've Rejected: <%= current_user.rejecteds.count %></p>
+
+
+      <br>
+      <%= link_to "Find Pairs", user_friendships_path(current_user), class: "btn btn-default" %>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-12">
+      <h3 class="page-header">Completed Matches: <%= current_user.friends.count %></h3>
+    </div>
+
+    <% current_user.friends.each do |friend| %>
+
+      <div class="col-sm-2 col-xs-6">
+        <!--<a class="img-responsive portfolio-item" href="#">-->
+          <img class="img-responsive portfolio-item" src="<%= friend.image_url %>" alt="" >
+          <%= friend.github_name %>
+        <!--</a>-->
+      </div>
+
+    <% end %>
+  </div>
+
+  <br>
+  <br>
+  <hr>
+
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>© whithub 2015</p>
+      </div>
+    </div>
+  </footer>
+
+</div>

@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
+  has_friendship
+
   has_many :user_languages
   has_many :languages, through: :user_languages
 
-  has_many :matches
-  has_many :matchees, through: :matches
+  has_many :rejecteds
 
   validates :uid, presence: true, uniqueness: true
   validates :github_name, presence: true
@@ -24,6 +25,10 @@ class User < ActiveRecord::Base
         })
     end
   end
+  #
+  # def is_rejected?(friend_id)
+  #   self.rejected.include?(friend_id)
+  # end
 
   private
 

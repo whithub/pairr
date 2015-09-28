@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   get '/auth/github/callback',     to: 'sessions#create' #we need this route to match with one of our controllers
   get '/auth/failure',             to: 'sessions#failure'
   get '/logout',      as: :logout, to: 'sessions#destroy'
-  # delete '/logout',              to: 'sessions#destroy'  #same as above
 
   resources :users do
-    resources :matches, only: [:index]
+    resources :friendships, only: [:index] do
+      post 'reject'#, to: 'friendships#reject'
+      post 'approve'#, to: 'friendships#approve'
+    end
+
   end
 
 end

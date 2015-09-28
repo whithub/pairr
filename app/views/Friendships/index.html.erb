@@ -1,0 +1,115 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">Pairr Programming</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <% if current_user %>
+          <li><%= link_to 'Profile', dashboard_path %></li>
+          <li><%= link_to 'Logout', logout_path %></li>
+        <% else %>
+          <li><%= link_to 'Login with Github', login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+
+  <% if @existing_request_ids.count == User.all.count %>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          No one else is available for matching at this time. You've either accepted or rejected everyone.
+        </h1>
+      </div>
+    </div>
+
+  <% else %>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="potential-pairs-heading">Potential Pairs</h1>
+      </div>
+    </div>
+
+
+    <% @matches.each do |match| %>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header"><%= match.github_name %>
+        </h1>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-md-2 match-reject">
+        <%= link_to "Reject", user_friendship_reject_path(current_user, match), method: :post, class: "btn btn-danger" %>
+      </div>
+
+      <div class="col-md-8 match-image">
+        <img class="img-responsive" src="<%= match.image_url %>" alt="">
+      </div>
+
+      <div class="col-md-2 match-approve">
+        <%= link_to "Approve", user_friendship_approve_path(current_user, match), method: :post, class: "btn btn-success" %>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <h3>About Me</h3>
+        <% if match.about_me != "" %>
+          <p><%= match.about_me %></p>
+        <% else %>
+          <p> They don't have anything in their About Me... boring. </p>
+        <% end %>
+
+        <h3>Preferred Languages</h3>
+        <ul>
+          <% match.languages.map do |language| %>
+
+            <div class="col-sm-6 col-xs-6">
+              <li><%= language.name %></li>
+            </div>
+          <% end %>
+        </ul>
+
+        <br>
+        <br>
+      <% end %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <br>
+
+  <footer>
+    <hr>
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>© whithub 2015</p>
+      </div>
+    </div>
+  </footer>
+
+  <br>
+  <br>
+
+</div>

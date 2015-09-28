@@ -2,7 +2,11 @@
 
 <% @matches.each do |match| %>
 <img src="<%= match.image_url %>" >
-<%= match.github_name %>
+<%= match.github_name %><br>
+  <%= match.about_me %><br>
+  <% match.languages.map do |language| %>
+    <li><%= language.name %></li>
+  <% end %>
 
 <br>
 <br>

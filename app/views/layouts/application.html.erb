@@ -8,11 +8,12 @@
 </head>
 <body>
 
-<%#= render partial: 'layouts/nav' %>
-
-<%= render partial: 'layouts/flash' %>
-
 <div class="content">
+
+  <div class="flash">
+    <%= render partial: 'layouts/flash' %>
+  </div>
+
   <%= yield %>
 </div>
 

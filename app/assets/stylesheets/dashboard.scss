@@ -2,11 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.content {
+  background-color: #F8BB44;
+//  background-color: #FBD280;
+//  background-color: lightgrey;
+}
+
+
 
 
 img.img-responsive {
   height: 400px;
   width: 400px;
+  border-radius: 3%;
 //  margin-left: auto;
 //  margin-right: auto;
 }

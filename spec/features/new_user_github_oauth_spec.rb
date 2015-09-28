@@ -19,7 +19,7 @@ describe 'testing oauth with github,', :omniauth, type: :feature do
       fill_in "user_about_me", with: "I'm a catch."
       click_on "Let's Get Pairing"
 
-      expect(page).to have_content("Hello, whithub")
+      expect(page).to have_content("whithub")
       expect(current_path).to eq(dashboard_path)
     end
 

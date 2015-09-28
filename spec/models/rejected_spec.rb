@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Match, type: :model do
+RSpec.describe Rejected, type: :model do
 
 end

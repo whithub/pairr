@@ -6,7 +6,11 @@ class FriendshipsController < ApplicationController
   def index
     existing_requests = current_user.pending_friends + current_user.friends + [current_user]
     existing_request_ids = existing_requests.map(&:id)
-    @matches = User.where.not(id: existing_request_ids)
+
+    rejected_requests = current_user.rejecteds
+    rejected_requests_ids = rejected_requests.map(&:friend_id)
+
+    @matches = [User.where.not(id: existing_request_ids).where.not(id: rejected_requests_ids).sample]
   end
 
   def approve
@@ -19,10 +23,19 @@ class FriendshipsController < ApplicationController
   end
 
 
-  # def reject
-  #   @match.rejected!
-  #   flash.now[:notice] = 'REJECTED!'
-  # end
+  def reject
+    if @user.pending_friends.include?(@match)
+      @user.decline_request(@match)
+    end
+    @user.rejecteds.create(friend_id: @match.id)
+
+    # Below fixes a race condition allowing Whitney rejecting Justin means Justin can 'approve'
+    #  again as the friendship request gets deleted.
+    #
+    # @match.rejecteds.create(friend_id: @user.id)
+
+    redirect_to user_friendships_path(@user), notice: "REJECTED!"
+  end
 
   private
 

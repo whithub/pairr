@@ -1,12 +1,93 @@
-<%= form_for @user do |f| %>
-  <%= f.label :languages %><br>
-  <%= f.collection_check_boxes(:language_ids, Language.all.sort_by { |lang| lang.name }, :id, :name) %><hr/>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">Pairr Programming</a>
+    </div>
 
-  <%#= f.label :category_ids, 'Categories' %><br/>
-  <%#= f.collection_check_boxes(:category_ids, @restaurant.categories.all, :id, :name) %><hr/>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav"></ul>
+    </div>
+  </div>
+</nav>
 
-  <%= f.label :about_me %>
-  <%= f.text_field :about_me %>
+<br>
+<br>
+<br>
 
-  <%= f.submit "Let's Get Pairing" %>
-<% end %>
+<div class="container" id="account-setup-container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Account Setup</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>We just a need a little bit more information to get your account set up.</h2>
+    </div>
+  </div>
+
+  <br>
+
+
+  <%= form_for @user do |f| %>
+
+    <div class="col-md-12">
+      <%= f.label :languages, "Please Select Your Preferred Languages. -- Check all that apply. You must select at least one." %><br>
+    </div>
+
+    <%= f.collection_check_boxes(:language_ids,
+                                    Language.all.sort_by { |lang| lang.name },
+                                    :id, :name, :item_wrapper_class => 'checkbox_container') %>
+
+    <br>
+    <br>
+
+    <div class="col-md-12">
+      <%= f.label :about_me, "About Me:" %>
+    </div>
+
+    <%= f.text_area :about_me, placeholder: "Enter a short description about yourself: What are you looking for in a pair?  What are your coding interests? etc.", size: '150', class: 'about-me-text-input' %>
+
+    <br>
+    <br>
+
+    <%= f.submit "Let's Get Pairing", class: 'btn btn-success lets-get-pairing-button' %>
+  <% end %>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <footer>
+    <hr>
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>© whithub 2015</p>
+      </div>
+    </div>
+  </footer>
+
+  <br>
+  <br>
+
+</div>
+

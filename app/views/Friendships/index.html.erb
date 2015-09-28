@@ -23,79 +23,93 @@
 
 <div class="container">
 
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="potential-pairs-heading">Potential Pairs</h1>
-    </div>
-  </div>
+  <% if @existing_request_ids.count == User.all.count %>
 
-
-  <% @matches.each do |match| %>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header"><%= match.github_name %>
-      </h1>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-2 match-reject">
-      <%= link_to "Reject", user_friendship_reject_path(current_user, match), method: :post, class: "btn btn-warning" %>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          No one else is available for matching at this time. You've either accepted or rejected everyone.
+        </h1>
+      </div>
     </div>
 
-    <div class="col-md-8 match-image">
-      <img class="img-responsive" src="<%= match.image_url %>" alt="">
+  <% else %>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="potential-pairs-heading">Potential Pairs</h1>
+      </div>
     </div>
 
-    <div class="col-md-2 match-approve">
-      <%= link_to "Approve", user_friendship_approve_path(current_user, match), method: :post, class: "btn btn-success" %>
+
+    <% @matches.each do |match| %>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header"><%= match.github_name %>
+        </h1>
+      </div>
     </div>
 
-  </div>
+
+    <div class="row">
+
+      <div class="col-md-2 match-reject">
+        <%= link_to "Reject", user_friendship_reject_path(current_user, match), method: :post, class: "btn btn-danger" %>
+      </div>
+
+      <div class="col-md-8 match-image">
+        <img class="img-responsive" src="<%= match.image_url %>" alt="">
+      </div>
+
+      <div class="col-md-2 match-approve">
+        <%= link_to "Approve", user_friendship_approve_path(current_user, match), method: :post, class: "btn btn-success" %>
+      </div>
+
+    </div>
 
 
-  <div class="row">
-    <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
 
-      <h3>About Me</h3>
-      <% if match.about_me != "" %>
-        <p><%= match.about_me %></p>
-      <% else %>
-        <p> They don't have anything in their About Me... boring. </p>
-      <% end %>
-
-      <h3>Preferred Languages</h3>
-      <ul>
-        <% match.languages.map do |language| %>
-
-          <div class="col-sm-6 col-xs-6">
-            <li><%= language.name %></li>
-          </div>
+        <h3>About Me</h3>
+        <% if match.about_me != "" %>
+          <p><%= match.about_me %></p>
+        <% else %>
+          <p> They don't have anything in their About Me... boring. </p>
         <% end %>
-      </ul>
 
-      <br>
-      <br>
-      <br>
-      <hr/>
+        <h3>Preferred Languages</h3>
+        <ul>
+          <% match.languages.map do |language| %>
+
+            <div class="col-sm-6 col-xs-6">
+              <li><%= language.name %></li>
+            </div>
+          <% end %>
+        </ul>
+
+        <br>
+        <br>
+      <% end %>
+      </div>
 
     <% end %>
-    </div>
   </div>
 
   <br>
-  <br>
-  <hr>
 
   <footer>
+    <hr>
+    <br>
     <div class="row">
       <div class="col-lg-12">
         <p>© whithub 2015</p>
       </div>
     </div>
   </footer>
+
+  <br>
+  <br>
 
 </div>

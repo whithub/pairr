@@ -31,8 +31,8 @@ class FriendshipsController < ApplicationController
 
     # Below fixes a race condition allowing Whitney rejecting Justin means Justin can 'approve'
     #  again as the friendship request gets deleted.
-    #
-    # @match.rejecteds.create(friend_id: @user.id)
+
+    @match.rejecteds.create(friend_id: @user.id)
 
     redirect_to user_friendships_path(@user), notice: "REJECTED!"
   end

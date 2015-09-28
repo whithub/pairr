@@ -10,8 +10,6 @@ class FriendshipsController < ApplicationController
   end
 
   def approve
-    # @match = User.where.not(id: current_user.id).first
-    # @match = User.find_by(id: params[:friend_id])
     if @user.pending_friends.include?(@match)
       @user.accept_request(@match)
     else
@@ -34,6 +32,5 @@ class FriendshipsController < ApplicationController
 
   def set_match
     @match = User.find_by(id: params[:friendship_id])
-    # @match = User.where.not(id: params[:friend_id]).first
   end
 end

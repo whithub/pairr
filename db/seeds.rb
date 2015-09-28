@@ -4,7 +4,6 @@ class Seed
     create_users
     create_languages
     create_user_languages
-    create_matches
   end
 
   def create_users
@@ -604,7 +603,6 @@ class Seed
     puts "Languages Created"
   end
 
-
   def create_user_languages
     User.all.each do |user|
       Language.all.each do |language|
@@ -616,15 +614,7 @@ class Seed
     puts "User Languages Created"
   end
 
-  def create_matches
-    User.all.each do |user1|
-      User.all.each do |user2|
-        Friendship.create(friend_id: user1.id, friendable_id: user2.id) unless user1.id == user2.id
-      end
-    end
-    puts "Matches Created"
-  end
 end
 
 
-Seed.run
+Seed.new.run

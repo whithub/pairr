@@ -32,3 +32,12 @@
 <!--<div id="find-pairs-button">-->
   <!--<a href="<%#= user_friendships_path(current_user) %>" >Find Pairs</a>-->
 <!--</div>-->
+
+<h2>Friends <%= current_user.friends.count %></h2>
+<ul>
+  <% current_user.friends.each do |friend| %>
+    <li><%= friend.github_name %></li>
+  <% end %>
+</ul>
+
+<h3>Total Friends liked <%= current_user.pending_friends.count %></h3>

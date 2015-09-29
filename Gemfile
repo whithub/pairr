@@ -27,6 +27,8 @@ gem 'jquery-rails'
 
 gem 'has_friendship', github: 'yhoshino11/has_friendship', branch: 'devel'
 
+gem 'airbrake'
+
 group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'pry-rails'

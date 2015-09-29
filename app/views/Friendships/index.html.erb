@@ -67,7 +67,7 @@
 
       <h3>Preferred Languages</h3>
       <ul>
-        <% match.languages.map do |language| %>
+        <% match.languages.each do |language| %>
 
           <div class="col-sm-6 col-xs-6">
             <li><%= language.name %></li>

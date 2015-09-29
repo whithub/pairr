@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
 
     @matches = [User.where.not(id: existing_request_ids).where.not(id: rejected_requests_ids).sample]
 
-    render
+    render template: 'friendship/index'
   end
 
   def approve

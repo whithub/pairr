@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Language, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:language) do
+    Language.create(name: "JavaScript")
+  end
+
+  it 'requires a name' do
+    is_expected.to validate_presence_of(:name)
+  end
+
+
 end

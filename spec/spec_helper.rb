@@ -35,6 +35,56 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
+
+    User.create(
+      github_name:"DaishaV",
+      uid: 11197637,
+      image_url: "https://avatars.githubusercontent.com/u/11197637?v=3",
+      # html_url: "https://github.com/DaishaV",
+      about_me: "would love to get your help on my new startup; it's in stealth mode so we can only use 1-character variable names, but it will be fun")
+
+    User.create(
+      github_name:"jcasimir",
+      uid: 43102,
+      image_url: "https://avatars.githubusercontent.com/u/43102?v=3",
+      # html_url: "https://github.com/jcasimir",
+      about_me: "i am so alone plz pair with me")
+
+    User.create(
+      github_name:"jmejia",
+      uid: 73824,
+      image_url: "https://avatars.githubusercontent.com/u/73824?v=3",
+      # html_url: "https://github.com/jmejia",
+      about_me: "would love to get your help on my new startup; it's in stealth mode so we can only use 1-character variable names, but it will be fun")
+
+    User.create(
+      github_name:"novohispano",
+      uid: 1654034,
+      image_url: "https://avatars.githubusercontent.com/u/1654034?v=3",
+      # html_url: "https://github.com/novohispano",
+      about_me: "i am so alone plz pair with me")
+
+    User.create(
+      github_name:"rwarbelow",
+      uid: 3311609,
+      image_url: "https://avatars.githubusercontent.com/u/3311609?v=3",
+      # html_url: "https://github.com/rwarbelow",
+      about_me: "would love to get your help on my new startup; it's in stealth mode so we can only use 1-character variable names, but it will be fun")
+
+    User.create(
+      github_name:"stevekinney",
+      uid: 251000,
+      image_url: "https://avatars.githubusercontent.com/u/251000?v=3",
+      # html_url: "https://github.com/stevekinney",
+      about_me: "i am so alone plz pair with me")
+
+    User.create(
+      github_name:"worace",
+      uid: 1227440,
+      image_url: "https://avatars.githubusercontent.com/u/1227440?v=3",
+      # html_url: "https://github.com/worace",
+      about_me: "would love to get your help on my new startup; it's in stealth mode so we can only use 1-character variable names, but it will be fun")
+
     Language.create!(name: "JavaScript")
     Language.create!(name: "Java")
     Language.create!(name: "Ruby")
@@ -59,6 +109,14 @@ RSpec.configure do |config|
     Language.create!(name: "Erlang")
     Language.create!(name: "Rust")
     Language.create!(name: "Swift")
+
+    User.all.each do |user|
+      Language.all.each do |language|
+        if rand(2) == 0
+          UserLanguage.create(user_id: user.id, language_id: language.id)
+        end
+      end
+    end
   end
 
   # rspec-mocks config goes here. You can use an alternate test double

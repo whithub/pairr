@@ -20,7 +20,7 @@ describe 'User dashboard', :omniauth, type: :feature do
     end
 
     it "displays a button inviting them to 'Find Pairs'." do
-      expect(page).to have_button("Find Pairs")
+      expect(page).to have_link("Find Pairs")
     end
 
     it "and click on Find Pairs button,
@@ -30,8 +30,9 @@ describe 'User dashboard', :omniauth, type: :feature do
 
       click_on "Find Pairs"
 
-      expect(current_path).to eq("")
-      expect(page).to have_button("Find Pairs!")
+      expect(page).to have_content("Potential Pairs")
+      expect(page).to have_link("Approve")
+      expect(page).to have_link("Reject")
     end
   end
 end

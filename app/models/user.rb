@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   validates :uid, presence: true, uniqueness: true
   validates :github_name, presence: true
+  validates_length_of :about_me, maximum: 500
+
   validate  :chose_at_least_one_language, on: :update
 
   def self.from_omniauth(auth_info)

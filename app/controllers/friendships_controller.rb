@@ -11,6 +11,8 @@ class FriendshipsController < ApplicationController
     rejected_requests_ids = rejected_requests.map(&:friend_id)
 
     @matches = [User.where.not(id: existing_request_ids).where.not(id: rejected_requests_ids).sample]
+
+    render
   end
 
   def approve
